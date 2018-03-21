@@ -17,13 +17,15 @@ public class BeerHouse{
     }
 
     public synchronized void out() {
-        System.out.println("Eliminated value = " + this.counter);
-        this.counter--;
-        if(this.counter == 99){
-            notifyAll();
-        }
-        if(this.counter==0){
-            this.enabled = false;
+        if(this.counter>0){
+            System.out.println("Eliminated value = " + this.counter);
+            this.counter--;
+            if (this.counter == 99) {
+                notifyAll();
+            }
+            if(this.counter==0){
+                this.enabled = false;
+            }
         }
     }
 
